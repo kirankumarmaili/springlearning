@@ -1,4 +1,4 @@
-package o.k.spring.slearn;
+package o.k.spring.slearn.helloworld;
 
 import lombok.Data;
 
