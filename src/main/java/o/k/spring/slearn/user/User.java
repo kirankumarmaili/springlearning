@@ -11,8 +11,7 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class User {
-
     private Integer id;
     private String name;
-    private Date birDate;
+    private Date birthDate;
 }

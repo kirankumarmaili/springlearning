@@ -3,6 +3,7 @@ package o.k.spring.slearn.user;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Component;
 
@@ -24,17 +25,17 @@ public class UserDaoService {
     }
 
     public User save(User u) {
-        if(u.getId() !=null)
+        if(u.getId()==null || u.getId()==0)
             u.setId(++userCount);
         users.add(u);
         return u;
     }
 
-    public User findOne(int id) {
+    public Optional<User> findOne(int id) {
         for(User user:users) {
             if(user.getId()==id)
-                return user;
+                return Optional.of(user);
         }
-        return null;
+        return Optional.empty();
     }
 }
