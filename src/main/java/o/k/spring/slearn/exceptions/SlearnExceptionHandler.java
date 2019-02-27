@@ -3,8 +3,10 @@ package o.k.spring.slearn.exceptions;
 import java.util.Date;
 
 import org.springframework.core.annotation.AnnotationUtils;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -35,5 +37,13 @@ public class SlearnExceptionHandler extends ResponseEntityExceptionHandler {
 		ExceptionResponse errorDetails = new ExceptionResponse(new Date(), ex.getMessage(),
 				request.getDescription(false), ErrorCode.UNKNOWN);
 		return new ResponseEntity<>(errorDetails, HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+	
+	@Override
+	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
+			HttpHeaders headers, HttpStatus status, WebRequest request) {
+		ExceptionResponse errorDetails = new ExceptionResponse(new Date(), "Invalid Data",
+				ex.getBindingResult().toString(), ErrorCode.VALIDATION_FAILED);
+		return new ResponseEntity<>(errorDetails, HttpStatus.BAD_REQUEST);
 	}
 }
