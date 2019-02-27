@@ -12,4 +12,9 @@ public class UserIdNotFoundException extends NotFoundException {
     public UserIdNotFoundException(Integer id) {
         super("User id :" + id + " not found");
     }
+
+    @Override
+    public ErrorCode getErrorCode() {
+        return ErrorCode.USERID_NOT_FOUND;
+    }
 }
