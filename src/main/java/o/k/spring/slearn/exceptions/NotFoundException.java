@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
  */
 
  @ResponseStatus(HttpStatus.NOT_FOUND)
-public class NotFoundException extends RuntimeException implements SlearnException {
+public class NotFoundException extends SlearnRunTimeException {
 
     private static final long serialVersionUID = 3980264552886170179L;
     
