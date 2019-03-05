@@ -1,0 +1,1 @@
+create table user (id integer not null, birth_date timestamp, name varchar(100), primary key (id));
