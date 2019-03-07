@@ -1,0 +1,1 @@
+insert into post values(1,'First Post',1,sysdate());

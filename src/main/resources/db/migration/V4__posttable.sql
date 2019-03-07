@@ -1,0 +1,1 @@
+create table post(id integer not null,description varchar(100) not null,user_id integer not null,date timestamp,primary key(id),foreign key(user_id) references user(id));
